@@ -49,7 +49,7 @@ class TestTcsh(object):
         assert 'alias FUCK' in shell.app_alias('FUCK')
         assert 'thefuck' in shell.app_alias('fuck')
 
-    def test_get_history(self, history_lines, shell):
+    def test_get_history(self, history_lines, isfile, shell):
         history_lines(['ls', 'rm'])
         assert list(shell.get_history()) == ['ls', 'rm']
 
