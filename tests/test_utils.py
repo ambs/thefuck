@@ -2,7 +2,7 @@
 
 import pytest
 import warnings
-from mock import Mock, call, patch
+from unittest.mock import Mock, call, patch
 from thefuck.utils import default_settings, \
     memoize, get_closest, get_all_executables, replace_argument, \
     get_all_matched_commands, is_app, for_app, cache, \
@@ -256,7 +256,7 @@ class TestGetValidHistoryWithoutCurrent(object):
                             return_value='fuck')
 
     @pytest.fixture(autouse=True)
-    def bins(self, mocker):
+    def bins(self, mocker, no_memoize):
         callables = list()
         for name in ['diff', 'ls', 'café']:
             bin_mock = mocker.Mock(name=name)

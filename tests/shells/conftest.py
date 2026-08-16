@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def builtins_open(mocker):
-    return mocker.patch('six.moves.builtins.open')
+    return mocker.patch('builtins.open')
 
 
 @pytest.fixture
@@ -12,7 +12,6 @@ def isfile(mocker):
 
 
 @pytest.fixture
-@pytest.mark.usefixtures('isfile')
 def history_lines(mocker):
     def aux(lines):
         mock = mocker.patch('io.open')

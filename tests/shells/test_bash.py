@@ -61,7 +61,7 @@ class TestBash(object):
         assert 'PYTHONIOENCODING=utf-8' in alias
         assert 'TF_SHELL_ALIASES=$(alias)' in alias
 
-    def test_get_history(self, history_lines, shell):
+    def test_get_history(self, history_lines, isfile, shell):
         history_lines(['ls', 'rm'])
         assert list(shell.get_history()) == ['ls', 'rm']
 

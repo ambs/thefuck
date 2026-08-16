@@ -2,7 +2,6 @@ from subprocess import Popen, PIPE
 from time import time
 import os
 import sys
-import six
 from .. import logs
 from ..conf import settings
 from ..const import ARGUMENT_PLACEHOLDER
@@ -122,8 +121,4 @@ class Fish(Generic):
         history_file_name = self._get_history_file_name()
         if os.path.isfile(history_file_name):
             with open(history_file_name, 'a') as history:
-                entry = self._get_history_line(command_script)
-                if six.PY2:
-                    history.write(entry.encode('utf-8'))
-                else:
-                    history.write(entry)
+                history.write(self._get_history_line(command_script))
